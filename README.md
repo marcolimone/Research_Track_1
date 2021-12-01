@@ -28,52 +28,29 @@ void callback  di /odom(define /odom message)
    response of the service;
  }
  
-void callback /base_scan(define /base_scan message)
+void callback /base_scan(define /base_scan message, take three values, right,left and front)
 {  ROS_INFO(message to screen);
-   initialize geometry_msgs::Twist my_vel;
-   if(msg->ranges[360]<0.8)
+   initialize a objrct for publish velocity;
+   if(the front value is minor then 0.8)
       {
-        if(msg->ranges[100] < msg->ranges[619])
-        {
-           count=1;
-           my_vel.linear.x = 0.0;
-           my_vel.angular.z = 0.5;
-        }
+        if(left value is minor than right value)
+        {  turn right;}
         else
-        {
-         count=1;
-         my_vel.linear.x = 0.0;
-         my_vel.angular.z = -0.5;
-        }
+        {turn left;}
       }
-   else if( msg->ranges[100] < 0.55)
-     {  
-       count=1;
-       my_vel.linear.x = 0.0;
-       my_vel.angular.z = 0.5;   
-     }
+   else if( left value minor than 0.55)
+     {  turn right;}
    
-   else if(msg->ranges[619] < 0.55)
-     {
-       count=1;
-       my_vel.linear.x = 0.0;
-       my_vel.angular.z = -0.5;   
-     }
-   
+   else if(right value minor than 0.55)
+     { turn left; }
    else 
-     {
-        my_vel.linear.x = vel;
-        count=0;
-     }
-   pub.publish(my_vel);
+     { set the linear velocity given by the service;}
+   publish velocity
 }
-
-
 
 int main (int argc, char **argv)
 
-{
-   Initialize the node, setup the NodeHandle for handling the communication with the ROS system
+{  Initialize the node, setup the NodeHandle for handling the communication with the ROS system
    define subscriber for /odom and call of callback
    initialize client1 for the custom service
    define the subscriber to /base_scan
@@ -81,3 +58,58 @@ int main (int argc, char **argv)
    ros::spin();
    return 0;
 }
+
+PSEUDO-CODE Vel_controller.cpp
+
+define publisher and service
+float new_vel=0.0;
+void Callback(defie /odom message)
+{  ROS_INFO(message to screen );
+   define object for custom service, reset service and for pub message
+   aquire command from keybord;
+   printf("Send 0 to reset, 1 to accelerate, 2 to decellerate \n");
+   if (command == 0)
+   { call reset service; 
+   }
+   else if(command == 1)
+   { request for custom service = 1;
+     call custom service;
+   }
+   else if(command == 2)
+   {
+     request for custom service= 2;
+     call custom service;
+   }
+   }
+int main (int argc, char **argv)
+
+{  Initialize the node, setup the NodeHandle for handling the communication with the ROS system
+   define subscriber to /odom and call callback;
+   inizialise client1 for reset service;
+   inizialise client2 for custom service;
+   inizialise publisher to /cmd_vel;
+   ros::spin();
+   return 0;
+}
+
+PSEUDO-CODE car_server.cpp
+
+float my_vel= 0.0;
+bool myvel (define request and response){
+        if (response == 1)
+        { responset=my_vel+1.0;}
+        else if (request == 2)
+        { response=my_vel-1.0;}
+        else if (request == 3)
+        { response=my_vel;}
+        my_vel=res.mult;
+        return true;
+}
+
+int main(int argc, char **argv)
+
+{  Initialize the node, setup the NodeHandle for handling the communication with the ROS system
+   define service;
+   ros::spin();
+   return 0;
+   }
