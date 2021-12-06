@@ -21,6 +21,7 @@ This node is entirely organized in the my_car_srv package which contains the srv
 PSEUDO-CODE car_controlle.cpp
 
 void callback  di /odom(define /odom message)
+
 {  ROS_INFO(message to screen);
    initialize a object for the custom service
    request for the service: request to have the velocity value;
@@ -30,6 +31,7 @@ void callback  di /odom(define /odom message)
  }
  
 void callback /base_scan(define /base_scan message, take three values, right,left and front)
+
 {  ROS_INFO(message to screen);
    initialize a objrct for publish velocity;
    if(the front value is minor then 0.8)
@@ -65,6 +67,7 @@ PSEUDO-CODE Vel_controller.cpp
 define publisher and service
 float new_vel=0.0;
 void Callback(defie /odom message)
+
 {  ROS_INFO(message to screen );
    define object for custom service, reset service and for pub message
    aquire command from keybord;
@@ -82,6 +85,7 @@ void Callback(defie /odom message)
      call custom service;
    }
    }
+   
 int main (int argc, char **argv)
 
 {  Initialize the node, setup the NodeHandle for handling the communication with the ROS system
@@ -96,6 +100,7 @@ int main (int argc, char **argv)
 PSEUDO-CODE car_server.cpp
 
 float my_vel= 0.0;
+
 bool myvel (define request and response){
         if (response == 1)
         { responset=my_vel+1.0;}
