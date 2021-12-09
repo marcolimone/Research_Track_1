@@ -7,7 +7,7 @@
 ros::ServiceClient client1;     /*define custom service*/
 ros::Publisher pub;             /*define publisher*/
 float vel=0.0;                  /*initialize global variable*/
-int count;
+
 
 
 
@@ -41,27 +41,27 @@ void carCallback(const sensor_msgs::LaserScan::ConstPtr& msg)
       {
         if(msg->ranges[100] < msg->ranges[619])        //check on lateral distances to understand which side to turn to
         {
-           count=1;
+           
            my_vel.linear.x = 0.0;                      
            my_vel.angular.z = 0.5;                     //set angula.z to turn right
         }
         else
         {
-         count=1;
+        
          my_vel.linear.x = 0.0;
          my_vel.angular.z = -0.5;                      //set angula.z to turn left
         }
       }
    else if( msg->ranges[100] < 0.55)                   //check on left distance
      {  
-       count=1;
+       
        my_vel.linear.x = 0.0;
        my_vel.angular.z = 0.5;   
      }
    
    else if(msg->ranges[619] < 0.55)                   //check on right distance
      {
-       count=1;
+       
        my_vel.linear.x = 0.0;
        my_vel.angular.z = -0.5;   
      }
@@ -69,7 +69,7 @@ void carCallback(const sensor_msgs::LaserScan::ConstPtr& msg)
    else                                               //if all previous check fail, is setted the global value vel
      {
         my_vel.linear.x = vel;
-        count=0;
+        
      }
    pub.publish(my_vel);                              //publish my_vel to give the robot a linear or angular velocity
 }
