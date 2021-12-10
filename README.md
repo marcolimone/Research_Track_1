@@ -2,6 +2,7 @@
 In this second assignment I have a robot which should move autonomously inside a circuit and I have to control it with ROS, in a special way I need to have a node that control the movement of the robot in the circuit, and another node that allow the user to increase or decrease and to reset the position of the robot. 
 In my code I use two node called "carcontroller_node" and "Velcontroller_node", and a custom service called "server_vel_node".These three nodes allow me respectively to manage the laser scans of the robot so as not to crash (carcontroller_node), to manage the user inputs for acceleration, deceleration and reset of the robot (Velcontroller_node) and the server (server_vel_node) to manage the new calculated speed and make it available for all nodes, in particular for the carcontroller_node.
 To use the code the user have to launch the simulator enviroment, than launch the server with the command "rosrun my_car_srv server_vel_node", then he have to launch the controller node with "rosrun car_controller carcontroller_node" and in the end it launch "rosrun vel_controller Velcontroller_node".
+The robot runs in a good wauìy up to speed 7, after sometimes it can crush. The movement of the robot can be improved making a better check on the elements of the "ranges" array that the topic /base_scan give back.
 
 carcontrollre_node
 
