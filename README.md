@@ -21,7 +21,7 @@ initializate global variables
 void currentStatus(:MoveBaseActionFeedback msg) : {      
 if (variable id != from the actual goal ID) {
         
-        set id equal to actual ID;                                                   /
+        set id equal to actual ID;                                                   
     }
 
 }
@@ -43,14 +43,14 @@ void clbk_laser(LaserScan msg):{
            if (front < 1.0 ){
            robot does not go on;
            }
-           else if (rright < 0.5){                                                                     //turn left if the wall on the right is too near
+           else if (rright < 0.5){                                                                     
            turn in order to not crash
            }
-           else if (lleft < 0.5){                                                                      //turn right if the wall on the left is too near
+           else if (lleft < 0.5){                                                                     
            turn in order to not crash
            }
         }
-        //command to drive the robot, same as mode 2
+        command to drive the robot, same as mode 2
         else {
         
         if (command == 1){
@@ -78,7 +78,8 @@ void clbk_laser(LaserScan msg):{
     }
 
 
-void userCallback(Odometry msg):{                                     
+void userCallback(Odometry msg):
+{                                     
  geometry_msgs::Twist my_vel; 
  move_base_msgs::MoveBaseActionGoal coordinates;
  actionlib_msgs::GoalID canc_goal;
@@ -87,7 +88,7 @@ void userCallback(Odometry msg):{
  float y;
  
  
- //MODE 1
+ //MODE 1 :
  if (mode_1 == 1){
     Ask the user for a new position 
     cin >> x;
@@ -107,13 +108,13 @@ void userCallback(Odometry msg):{
     
 }
 
-//MODE 3
+//MODE 3 :
 if (mode_3 == 1) { 
     Ask the user what the robot have to do or if he want to change mode 
     cin >> command;
  }    
 
-//MODE 2
+//MODE 2 :
 else if (mode_2 == 1){
         Ask the user what the robot have to do or if he want to change mode 
         cin >> comm;
