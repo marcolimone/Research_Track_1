@@ -90,9 +90,10 @@ void userCallback(Odometry msg)
  float y;
  
  
- //MODE 1 :
+ //MODE 1 
  
  if (mode_1 == 1){
+    
     Ask the user for a new position 
     cin >> x;
     cin >> y;
@@ -111,16 +112,18 @@ void userCallback(Odometry msg)
     
 }
 
-//MODE 3 :
+//MODE 3 
 
-if (mode_3 == 1) { 
+if (mode_3 == 1) {
+
     Ask the user what the robot have to do or if he want to change mode 
     cin >> command;
  }    
 
-//MODE 2 :
+//MODE 2 
 
 else if (mode_2 == 1){
+
         Ask the user what the robot have to do or if he want to change mode 
         cin >> comm;
         if (comm == 1){
@@ -154,8 +157,10 @@ int main (int argc, char **argv):
  printf()
  take the keyboard command  
  setting of the mode using global variables
+ 
+ 
  if (mode == 1){
-       set the global variable for mode 1 to 1;
+        set the global variable for mode 1 to 1;
        }
  else if (mode == 2){   
        set the global variable for mode 2 to 1;
