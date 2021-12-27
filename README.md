@@ -18,7 +18,7 @@ declaretion of publishers
 initializate global variables 
 
 
-void currentStatus(:MoveBaseActionFeedback msg) : {      
+void currentStatus(:MoveBaseActionFeedback msg)  {      
 if (variable id != from the actual goal ID) {
         
         set id equal to actual ID;                                                   
@@ -26,7 +26,7 @@ if (variable id != from the actual goal ID) {
 
 }
 
-void clbk_laser(LaserScan msg):{                        
+void clbk_laser(LaserScan msg){                        
     geometry_msgs::Twist vel;
     
     float rright = 30.0;
@@ -78,8 +78,9 @@ void clbk_laser(LaserScan msg):{
     }
 
 
-void userCallback(Odometry msg):
-{                                     
+void userCallback(Odometry msg)
+{        
+
  geometry_msgs::Twist my_vel; 
  move_base_msgs::MoveBaseActionGoal coordinates;
  actionlib_msgs::GoalID canc_goal;
@@ -89,6 +90,7 @@ void userCallback(Odometry msg):
  
  
  //MODE 1 :
+ 
  if (mode_1 == 1){
     Ask the user for a new position 
     cin >> x;
@@ -109,12 +111,14 @@ void userCallback(Odometry msg):
 }
 
 //MODE 3 :
+
 if (mode_3 == 1) { 
     Ask the user what the robot have to do or if he want to change mode 
     cin >> command;
  }    
 
 //MODE 2 :
+
 else if (mode_2 == 1){
         Ask the user what the robot have to do or if he want to change mode 
         cin >> comm;
@@ -140,9 +144,11 @@ else if (mode_2 == 1){
         publish velocity;
        }     
 }
+
 int main (int argc, char **argv):
 
 {
+
  Initialize the nodes 
  request of the mode to use
  printf()
