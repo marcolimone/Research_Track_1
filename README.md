@@ -79,6 +79,7 @@ void clbk_laser(LaserScan msg){
 
 
 void userCallback(Odometry msg)
+
 {        
 
  geometry_msgs::Twist my_vel; 
@@ -99,7 +100,7 @@ void userCallback(Odometry msg)
     Ask the user if he want to chage mode or cancel the goal 
     cin >> change;
     if (change == 2 ) {
-            cancel goal; 
+       cancel goal; 
     }        
     else if (change == 3){ 
        cancel goal and set mode 2 variable to 1
