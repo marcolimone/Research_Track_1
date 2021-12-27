@@ -160,12 +160,15 @@ int main (int argc, char **argv):
  
  
  if (mode == 1){
+ 
         set the global variable for mode 1 to 1;
        }
- else if (mode == 2){   
+ else if (mode == 2){ 
+ 
        set the global variable for mode 2 to 1;
        }
  else if (mode == 3){
+ 
        set the global variable for mode 3 to 1;
        }
    
