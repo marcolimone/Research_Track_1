@@ -140,7 +140,6 @@ else if (mode_2 == 1){
         else if (comm == 6){              
            set current mode variable to 0 and mode 3 variable to 1 to change mode
            }
-        
         publish velocity;
        }     
 }
