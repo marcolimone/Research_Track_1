@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<launch>
+    <param name="flag" type="int" value="1" />
+    <param name="mode1" type="int" value="0" />
+    <param name="mode2" type="int" value="0" />
+    <param name="mode3" type="int" value="0" />
+
+    <node name="user_interface" pkg="user_interface" type="user_interface.py" output="screen" required="true" launch-prefix="xterm -e" />
+    
+</launch>
